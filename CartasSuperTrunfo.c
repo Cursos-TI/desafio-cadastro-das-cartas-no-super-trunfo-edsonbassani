@@ -93,7 +93,7 @@ void cadastrarCarta() {
         return;
     }
 
-    printf("Informe a quantidade de Pontos Turisticos para %c-%02d:\n", codigoEstado, codigoCidade);
+    printf("Informe a quantidade de Pontos Turísticos para %c-%02d:\n", codigoEstado, codigoCidade);
     scanf("%d", &pontosTuristicos);
 
     // Verificação dos pontos turísticos
@@ -106,7 +106,7 @@ void cadastrarCarta() {
     pibPerCapita = calcPibPerCapita(pib, populacao);
 
     printf("***********************************\n");
-    printf("  Carta cadastradAa com sucesso!   \n");
+    printf("  Carta cadastrada com sucesso!   \n");
     printf("***********************************\n");
 
     printf("Código da Carta: %c%02d\n", codigoEstado, codigoCidade);
