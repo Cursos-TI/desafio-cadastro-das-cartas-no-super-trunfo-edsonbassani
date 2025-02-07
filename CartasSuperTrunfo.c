@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include "CartasSuperTrunfo.h"
 
+int main() {
+    cadastrarCarta();
+    return 0;
+}
+
 void cabecalho() {
     printf("***********************************\n");
     printf("************ MateCheck ************\n");
@@ -11,27 +16,6 @@ void cabecalho() {
     printf("***********************************\n");
     printf("******* Cadastro de Cartas ********\n");
     printf("***********************************\n");
-}
-
-double calcDensidadePopulacional(double populacao, double area) {
-    if (area == 0) {
-        printf("Erro: Área não pode ser zero.\n");
-        return 0;
-    }
-    return (populacao / area);
-}
-
-double calcPibPerCapita(double pib, double populacao) {
-    if (populacao == 0) {
-        printf("Erro: População não pode ser zero.\n");
-        return 0;
-    }
-    return (pib / populacao);
-}
-
-void gerarCodigoCarta(char codigoEstado, int codigoCidade, char nomeCidade[100], char uf[3])
-{
-    printf("Código da Carta: %c%02d (%s-%s)\n", codigoEstado, codigoCidade, nomeCidade, uf);
 }
 
 void cadastrarCarta() {
@@ -182,7 +166,23 @@ void cadastrarCarta() {
 
 }
 
-int main() {
-    cadastrarCarta();
-    return 0;
+void gerarCodigoCarta(char codigoEstado, int codigoCidade, char nomeCidade[100], char uf[3])
+{
+    printf("Código da Carta: %c%02d (%s-%s)\n", codigoEstado, codigoCidade, nomeCidade, uf);
+}
+
+double calcDensidadePopulacional(double populacao, double area) {
+    if (area == 0) {
+        printf("Erro: Área não pode ser zero.\n");
+        return 0;
+    }
+    return (populacao / area);
+}
+
+double calcPibPerCapita(double pib, double populacao) {
+    if (populacao == 0) {
+        printf("Erro: População não pode ser zero.\n");
+        return 0;
+    }
+    return (pib / populacao);
 }
