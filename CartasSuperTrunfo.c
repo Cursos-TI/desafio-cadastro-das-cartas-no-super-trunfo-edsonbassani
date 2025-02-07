@@ -29,14 +29,24 @@ double calcPibPerCapita(double pib, double populacao) {
     return (pib / populacao);
 }
 
+void gerarCodigoCarta(char codigoEstado, int codigoCidade, char nomeCidade[100], char uf[3])
+{
+    printf("Código da Carta: %c%02d (%s-%s)\n", codigoEstado, codigoCidade, nomeCidade, uf);
+}
+
 void cadastrarCarta() {
+    #pragma region Variaveis
     char codigoEstado;
     char uf[3];
     char nomeCidade[100];
+    char codigoCarta[5];
     int codigoCidade, pontosTuristicos;
     double populacao, area, pib, densidadePopulacional, pibPerCapita;
+    #pragma endregion Variaveis
 
     cabecalho();
+
+    #pragma region Codigo Estado
 
     printf("Informe o Código do Estado (A-H):\n");
     scanf(" %c", &codigoEstado);
@@ -47,6 +57,10 @@ void cadastrarCarta() {
         return;
     }
 
+    #pragma endregion Codigo Estado
+
+    #pragma region Codigo da Cidade
+
     printf("Informe o Código da Cidade (1-4):\n");
     scanf("%d", &codigoCidade);
 
@@ -55,6 +69,10 @@ void cadastrarCarta() {
         printf("Erro: Código da cidade inválido.\n");
         return;
     }
+
+    #pragma endregion Codigo da Cidade
+
+    #pragma region Nome da Cidade
 
     printf("Informe o Nome da Cidade:\n");
     scanf(" %[^\n]s", nomeCidade);
@@ -65,6 +83,10 @@ void cadastrarCarta() {
         return;
     }
 
+    #pragma endregion Nome da Cidade
+
+    #pragma region UF
+
     printf("Informe a UF da Cidade:\n");
     scanf("%s", uf);
 
@@ -74,7 +96,15 @@ void cadastrarCarta() {
         return;
     }
 
-    printf("Código da Carta: %c%02d (%s-%s)\n", codigoEstado, codigoCidade, nomeCidade, uf);
+    #pragma endregion UF
+
+    #pragma region Codigo da Carta
+
+    gerarCodigoCarta(codigoEstado, codigoCidade, nomeCidade, uf);
+
+    #pragma endregion Saida
+
+    #pragma region Populacao
 
     printf("Informe a População para %c%02d (%s-%s):\n", codigoEstado, codigoCidade, nomeCidade, uf);
     scanf("%lf", &populacao);
@@ -84,6 +114,10 @@ void cadastrarCarta() {
         printf("Erro: População não pode ser negativa.\n");
         return;
     }
+    
+    #pragma endregion Populacao
+
+    #pragma region Area
 
     printf("Informe a Área para %c%02d (%s-%s):\n", codigoEstado, codigoCidade, nomeCidade, uf);
     scanf("%lf", &area);
@@ -93,6 +127,10 @@ void cadastrarCarta() {
         printf("Erro: Área deve ser maior que zero.\n");
         return;
     }
+    
+    #pragma endregion Area
+
+    #pragma region PIB
 
     printf("Informe o PIB para %c%02d (%s-%s):\n", codigoEstado, codigoCidade, nomeCidade, uf);
     scanf("%lf", &pib);
@@ -102,6 +140,10 @@ void cadastrarCarta() {
         printf("Erro: PIB não pode ser negativo.\n");
         return;
     }
+    
+    #pragma endregion PIB
+
+    #pragma region Pontos Turisticos
 
     printf("Informe a quantidade de Pontos Turísticos para %c%02d (%s-%s):\n", codigoEstado, codigoCidade, nomeCidade, uf);
     scanf("%d", &pontosTuristicos);
@@ -111,9 +153,17 @@ void cadastrarCarta() {
         printf("Erro: Pontos turísticos não pode ser negativo.\n");
         return;
     }
+    
+    #pragma endregion Pontos Turisticos
+
+    #pragma region Calculos
 
     densidadePopulacional = calcDensidadePopulacional(populacao, area);
     pibPerCapita = calcPibPerCapita(pib, populacao);
+
+    #pragma endregion Calculos
+
+    #pragma region Saida
 
     printf("***********************************\n");
     printf("   Carta cadastrada com sucesso!   \n");
@@ -127,6 +177,9 @@ void cadastrarCarta() {
     printf("Pontos Turísticos: %d\n", pontosTuristicos);
     printf("Densidade Populacional: %.0lf hab/km2\n", densidadePopulacional);
     printf("PIB per capita: %.2lf\n", pibPerCapita);
+    
+    #pragma endregion Saida
+
 }
 
 int main() {
