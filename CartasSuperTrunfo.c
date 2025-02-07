@@ -56,7 +56,7 @@ void cadastrarCarta() {
     }
 
     printf("Informe o Nome da Cidade:\n");
-    scanf("%s", &nomeCidade);
+    scanf(" %[^\n]s", nomeCidade);
 
     // Verificação do nome da cidade
     if (nomeCidade == NULL || strlen(nomeCidade) == 0) {
