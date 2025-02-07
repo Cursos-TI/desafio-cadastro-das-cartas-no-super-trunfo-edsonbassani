@@ -31,6 +31,7 @@ double calcPibPerCapita(double pib, double populacao) {
 
 void cadastrarCarta() {
     char codigoEstado;
+    char uf[3];
     char nomeCidade[100];
     int codigoCidade, pontosTuristicos;
     double populacao, area, pib, densidadePopulacional, pibPerCapita;
@@ -63,10 +64,19 @@ void cadastrarCarta() {
         printf("Erro: Nome da cidade inválido.\n");
         return;
     }
-    
-    printf("Código da Carta: %c%02d\n", codigoEstado, codigoCidade);
 
-    printf("Informe a População para %c-%02d:\n", codigoEstado, codigoCidade);
+    printf("Informe a UF da Cidade:\n");
+    scanf("%s", uf);
+
+    // Verificação da UF cidade
+    if (uf == NULL || (strlen(uf) == 0 || strlen(uf) > 3)) {
+        printf("Erro: UF inválida.\n");
+        return;
+    }
+
+    printf("Código da Carta: %c%02d (%s-%s)\n", codigoEstado, codigoCidade, nomeCidade, uf);
+
+    printf("Informe a População para %c%02d (%s-%s):\n", codigoEstado, codigoCidade, nomeCidade, uf);
     scanf("%lf", &populacao);
 
     // Verificação da população
@@ -75,7 +85,7 @@ void cadastrarCarta() {
         return;
     }
 
-    printf("Informe a Área para %c-%02d:\n", codigoEstado, codigoCidade);
+    printf("Informe a Área para %c%02d (%s-%s):\n", codigoEstado, codigoCidade, nomeCidade, uf);
     scanf("%lf", &area);
 
     // Verificação da área
@@ -84,7 +94,7 @@ void cadastrarCarta() {
         return;
     }
 
-    printf("Informe o PIB para %c-%02d:\n", codigoEstado, codigoCidade);
+    printf("Informe o PIB para %c%02d (%s-%s):\n", codigoEstado, codigoCidade, nomeCidade, uf);
     scanf("%lf", &pib);
 
     // Verificação do PIB
@@ -93,7 +103,7 @@ void cadastrarCarta() {
         return;
     }
 
-    printf("Informe a quantidade de Pontos Turísticos para %c-%02d:\n", codigoEstado, codigoCidade);
+    printf("Informe a quantidade de Pontos Turísticos para %c%02d (%s-%s):\n", codigoEstado, codigoCidade, nomeCidade, uf);
     scanf("%d", &pontosTuristicos);
 
     // Verificação dos pontos turísticos
@@ -106,11 +116,11 @@ void cadastrarCarta() {
     pibPerCapita = calcPibPerCapita(pib, populacao);
 
     printf("***********************************\n");
-    printf("  Carta cadastrada com sucesso!   \n");
+    printf("   Carta cadastrada com sucesso!   \n");
     printf("***********************************\n");
 
     printf("Código da Carta: %c%02d\n", codigoEstado, codigoCidade);
-    printf("Nome da cidade: %s\n", nomeCidade);
+    printf("Nome da cidade: %s - %s\n", nomeCidade, uf);
     printf("População: %.0lf\n", populacao);
     printf("Área: %.0lf km2\n", area);
     printf("PIB: %.2lf\n", pib);
