@@ -25,7 +25,8 @@ void cadastrarCarta() {
     char nomeCidade[100];
     char codigoCarta[5];
     int codigoCidade, pontosTuristicos;
-    double populacao, area, pib, densidadePopulacional, pibPerCapita;
+    unsigned long int populacao;
+    double area, pib, densidadePopulacional, pibPerCapita;
     #pragma endregion Variaveis
 
     cabecalho();
@@ -91,7 +92,7 @@ void cadastrarCarta() {
     #pragma region Populacao
 
     printf("Informe a População para %c%02d (%s-%s):\n", codigoEstado, codigoCidade, nomeCidade, uf);
-    scanf("%lf", &populacao);
+    scanf("%lu", &populacao);
 
     // Verificação da população
     if (populacao < 0) {
@@ -103,7 +104,7 @@ void cadastrarCarta() {
 
     #pragma region Area
 
-    printf("Informe a Área para %c%02d (%s-%s):\n", codigoEstado, codigoCidade, nomeCidade, uf);
+    printf("Informe a Área (km²) para %c%02d (%s-%s):\n", codigoEstado, codigoCidade, nomeCidade, uf);
     scanf("%lf", &area);
 
     // Verificação da área
@@ -155,12 +156,12 @@ void cadastrarCarta() {
 
     printf("Código da Carta: %c%02d\n", codigoEstado, codigoCidade);
     printf("Nome da cidade: %s - %s\n", nomeCidade, uf);
-    printf("População: %.0lf\n", populacao);
+    printf("População: %.0lu\n", populacao);
     printf("Área: %.0lf km2\n", area);
     printf("PIB: %.2lf\n", pib);
     printf("Número de Pontos Turísticos: %d\n", pontosTuristicos);
-    printf("Densidade Populacional: %.0lf hab/km²\n", densidadePopulacional);
-    printf("PIB per capita: %.2lf reais\n", pibPerCapita);
+    printf("Densidade populacional: %.2f hab/km²\n", densidadePopulacional);
+    printf("PIB per capita: %.6f reais\n", pibPerCapita);
     
     #pragma endregion Saida
 
@@ -171,15 +172,16 @@ void gerarCodigoCarta(char codigoEstado, int codigoCidade, char nomeCidade[100],
     printf("Código da Carta: %c%02d (%s-%s)\n", codigoEstado, codigoCidade, nomeCidade, uf);
 }
 
-double calcDensidadePopulacional(double populacao, double area) {
+double calcDensidadePopulacional(unsigned long int populacao, double area) {
     if (area == 0) {
         printf("Erro: Área não pode ser zero.\n");
         return 0;
     }
+
     return (populacao / area);
 }
 
-double calcPibPerCapita(double pib, double populacao) {
+double calcPibPerCapita(double pib, unsigned long int populacao) {
     if (populacao == 0) {
         printf("Erro: População não pode ser zero.\n");
         return 0;
