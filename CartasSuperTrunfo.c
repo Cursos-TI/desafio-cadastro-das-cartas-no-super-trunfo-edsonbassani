@@ -158,9 +158,9 @@ void cadastrarCarta() {
     printf("População: %.0lf\n", populacao);
     printf("Área: %.0lf km2\n", area);
     printf("PIB: %.2lf\n", pib);
-    printf("Pontos Turísticos: %d\n", pontosTuristicos);
-    printf("Densidade Populacional: %.0lf hab/km2\n", densidadePopulacional);
-    printf("PIB per capita: %.2lf\n", pibPerCapita);
+    printf("Número de Pontos Turísticos: %d\n", pontosTuristicos);
+    printf("Densidade Populacional: %.0lf hab/km²\n", densidadePopulacional);
+    printf("PIB per capita: %.2lf reais\n", pibPerCapita);
     
     #pragma endregion Saida
 
