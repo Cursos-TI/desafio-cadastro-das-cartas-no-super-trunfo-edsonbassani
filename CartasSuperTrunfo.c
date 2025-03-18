@@ -6,6 +6,7 @@ Carta cartas[MAX_CARTAS];
 int totalCartas = 0;
 
 int main() {
+    //Menu Principal
     int opcao;
     do {
         printf("\n1. Cadastrar Carta\n");
@@ -45,12 +46,12 @@ void cabecalho() {
 }
 
 void cadastrarCarta() {
+    Carta novaCarta;
+    
     if (totalCartas >= MAX_CARTAS) {
         printf("Erro: Número máximo de cartas atingido.\n");
         return;
     }
-
-    Carta novaCarta;
 
     cabecalho();
 
